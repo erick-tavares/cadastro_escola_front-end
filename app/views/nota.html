@@ -1,0 +1,30 @@
+<h3 class="page-header">Registrar nota</h3>
+
+    <div class="row">
+        <form>
+        <div class="form-group col-md-6">
+            <label for="inputBoletim">Boletim</label>
+            <input type="text" class="form-control" id="inputBoletim" ng-model="nota.boletimId">
+       
+
+            <label for="inputAluno">Aluno</label>
+            <input type="text" class="form-control" id="inputAluno" ng-model="nota.alunoId">
+        
+         
+            <label for="inputMateria">Mat&eacute;ria</label>
+            <input type="text" class="form-control" id="inputMateria" ng-model="nota.materiaId">
+
+            <label for="inputNota">Nota</label>
+            <input type="text" class="form-control" id="inputNota" ng-model="nota.nota">
+        </div>
+    </form>
+
+    
+    <div class="row">
+        <div class="col-md-12">
+           <a href="despesas" class="btn btn-primary" ng-click="salvarDespesa()" >Salvar </a>
+            <a href="despesas" class="btn btn-default">Cancelar</a>
+        </div>
+    </div>
+    
+    </div>

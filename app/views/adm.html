@@ -1,0 +1,39 @@
+<h3 class="page-header">Registros administrativos</h3>
+
+<div class="row">
+    <form>
+        <div class="form-group col-md-6">
+            <label for="inputMateriaNome">Mat&eacute;ria</label>
+            <input type="text" class="form-control" id="inputMateriaNome" ng-model="materia.nome">
+            <br>
+
+            <h3>Per&iacute;odo</h3>
+            <label for="inputPeriodoInicio">In&iacute;cio do per&iacute;odo</label>
+            <input type="text" class="form-control" id="inputPeriodoInicio" ng-model="periodo.dtInicio">
+
+            <label for="inputPeriodoFim">Fim do per&iacute;odo</label>
+            <input type="text" class="form-control" id="inputPeriodoFim" ng-model="periodo.dtFim">
+
+            <label for="inputPeriodoDescricao">Descri&ccedil;&atilde;o do per&iacute;odo</label>
+            <input type="text" class="form-control" id="inputPeriodoDescricao" ng-model="periodo.descricao">
+            <br>
+
+            <h3>Boletim</h3>
+            <label for="inputPeriodoBoletim">Per&iacute;odo do boletim</label>
+            <input type="text" class="form-control" id="inputPeriodoBoletim" ng-model="boletim.periodoId">
+
+            <label for="inputAlunoBoletim">Aluno do boletim</label>
+            <input type="text" class="form-control" id="inputAlunoBoletim" ng-model="boletim.alunoId">
+
+        </div>
+    </form>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="despesas" class="btn btn-primary" ng-click="salvarDespesa()">Salvar </a>
+            <a href="despesas" class="btn btn-default">Cancelar</a>
+        </div>
+    </div>
+
+</div>

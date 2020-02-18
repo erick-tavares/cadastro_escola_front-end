@@ -1,0 +1,28 @@
+<h3 class="page-header">Registrar aluno</h3>
+
+    <div class="row">
+        <form>
+        <div class="form-group col-md-6">
+            <label for="inputNome">Nome</label>
+            <input type="text" class="form-control" id="inputNome" ng-model="aluno.nome">
+       
+
+            <label for="inputEndereco">Endere&ccedil;o</label>
+            <input type="text" class="form-control" id="inputEndereco" ng-model="aluno.endereco">
+        
+         
+            <label for="inputTelefone">Telefone</label>
+            <input type="text" class="form-control" id="inputTelefone" ng-model="aluno.telefone">
+        </div>
+    </form>
+
+    
+    <div class="row">
+        <div class="col-md-12">
+           <a href="alunos" class="btn btn-primary" ng-click="salvarAluno()" >Salvar </a>
+            <a href="alunos" class="btn btn-default">Cancelar</a>
+        </div>
+    </div>
+    
+    </div>
+
