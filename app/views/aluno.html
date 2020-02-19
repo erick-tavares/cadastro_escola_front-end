@@ -1,31 +1,33 @@
 <h3 class="page-header">Registrar aluno</h3>
+
 <body>
     <div class="row">
         <form>
-        <div class="form-group col-md-6">
-            <label for="inputNome">Nome</label>
-            <input type="text" class="form-control" id="inputNome" ng-model="aluno.nome">
-       
+            <div class="form-group col-md-6">
 
-            <label for="inputEndereco">Endere&ccedil;o</label>
-            <input type="text" class="form-control" id="inputEndereco" ng-model="aluno.endereco">
-        
-         
-            <label for="inputTelefone">Telefone</label>
-            <input type="text" class="form-control" id="inputTelefone" ng-model="aluno.telefone">
-        </div>
-    </form>
+                <label for="inputNome">Nome</label>
+                <input type="text" class="form-control" id="inputNome" ng-model="aluno.nome">
 
-    
-    <div class="row">
-        <div class="col-md-12">
-            <button type="submit" class="btn btn-primary" ng-click=salvarAluno()>Salvar</button>
-            <button type="button" class="btn btn-default" ng-click=cancelarAlteracaoAluno()>Cancelar</a>
+
+                <label for="inputEndereco">Endere&ccedil;o</label>
+                <input type="text" class="form-control" id="inputEndereco" ng-model="aluno.endereco">
+
+
+                <label for="inputTelefone">Telefone</label>
+                <input type="text" class="form-control" id="inputTelefone" ng-model="aluno.telefone">
+            </div>
+        </form>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary" ng-click=salvarAluno()>Salvar</button>
+                <button type="button" class="btn btn-default" ng-click=cancelarAlteracaoAluno()>Cancelar</a>
+            </div>
         </div>
     </div>
-    </div>
 
-   
+
 
 
     <div class="table-responsive col-md-12">
@@ -50,7 +52,9 @@
                     <td>{{aluno.endereco }}</td>
                     <td>{{aluno.telefone}}</td>
                     <td class="actions">
-                        <a class="btn btn-warning btn-xs"  ng-click="alterarAluno(aluno)"  >Editar</a>
+
+
+                        <a class="btn btn-warning btn-xs" ng-click="alterarAluno(aluno)">Editar</a>
                         <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal"
                             ng-click="deleteAluno(aluno.id)">Excluir</a>
                     </td>
@@ -59,26 +63,26 @@
         </table>
     </div>
 
-					<!-- Modal -->
-                    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                              <h4 class="modal-title" id="modalLabel">Excluir Aluno</h4>
-                            </div>
-                            <div class="modal-body">
-                              Deseja realmente excluir este aluno?
-                            </div>
-                            <div class="modal-footer">
-                            
-                            <button type="button" class="btn btn-primary" ng-click="deleteChamado(chamado.id)" 
-                            data-dismiss="modal">Sim</button>
-                              
-                          <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Excluir Aluno</h4>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente excluir este aluno?
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Sim</button>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
