@@ -1,18 +1,57 @@
-app.controller("AlunoController", function($scope, $http) {
+app.controller("AlunoController", function ($scope, $http) {
 
-    var urlApi = 'http://localhost:8080/alunos';
+$scope.listaAluno = [];
+$scope.aluno = {};
 
 
 
-	$scope.salvarAluno = function(aluno) {
+	var urlApi = 'http://localhost:8080/alunos';
 
+
+	$scope.salvarAluno = function() {
+		var metodo = 'POST';
 		if ($scope.aluno.id){
-			return $http.put(urlApi + "/" + aluno.id,aluno);
-		}else{
-            return $http.post(urlApi, aluno);
-        }
-
+			metodo = 'PUT';
+		}
+		$http({
+			method : metodo,
+			url : urlApi,
+			data : $scope.aluno
+		}).then(function(response) {
+			$scope.listaAluno.push(response.data);
+			$scope.listarAlunos();
+		}, function(response) {console.log('erro ao salvar aluno');
+		});
 	};
 
+	$scope.listarAlunos = function () {
+		$http({ method: 'GET',
+		 url: urlApi 
+		}).then(function (response) {
+		$scope.listaAluno = response.data;
+		}, function (response) { console.log('erro ao listar alunos') });
+	}
+
+
+	$scope.deleteAluno = function(id) {
+
+		$http({
+			method : 'DELETE',
+			url : urlApi + id
+		}).then(function(response) {
+			$scope.listaAluno.splice(id, 1);
+			$scope.listarAlunos();
+		}, function(response) {
+			console.log('error ao deletar aluno ');
+		});
+	};
+
+	$scope.cancelarAlteracaoAluno = function(aluno) {
+		$scope.aluno = {};
+	};
 
 });
+
+
+
+
