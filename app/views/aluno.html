@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-md-12">
             <button type="submit" class="btn btn-primary" ng-click=salvarAluno()>Salvar</button>
-            <button type="button" class="btn btn-default">Cancelar</a>
+            <button type="button" class="btn btn-default" ng-click=cancelarAlteracaoAluno()>Cancelar</a>
         </div>
     </div>
     </div>
@@ -31,7 +31,7 @@
     <div class="table-responsive col-md-12">
         <br>
         <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarAlunos()" />
-        <br>
+        <br><br>
 
         <table class="table table-hover table-bordered" id="tabelaAluno" cellspacing="0" cellpadding="0">
             <thead>
@@ -50,12 +50,35 @@
                     <td>{{aluno.endereco }}</td>
                     <td>{{aluno.telefone}}</td>
                     <td class="actions">
-                        <a class="btn btn-warning btn-xs" href="alunos/{{aluno.id}}"  >Editar</a>
-                        <a class="btn btn-danger btn-xs" href="#" data-toggle="modal" data-target="#delete-modal"
+                        <a class="btn btn-warning btn-xs"  ng-click="alterarAluno(aluno)"  >Editar</a>
+                        <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal"
                             ng-click="deleteAluno(aluno.id)">Excluir</a>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+					<!-- Modal -->
+                    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title" id="modalLabel">Excluir Aluno</h4>
+                            </div>
+                            <div class="modal-body">
+                              Deseja realmente excluir este aluno?
+                            </div>
+                            <div class="modal-footer">
+                            
+                            <button type="button" class="btn btn-primary" ng-click="deleteChamado(chamado.id)" 
+                            data-dismiss="modal">Sim</button>
+                              
+                          <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
 </body>

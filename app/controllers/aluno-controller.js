@@ -10,12 +10,14 @@ app.controller("AlunoController", function ($scope, $http) {
 
 	$scope.salvarAluno = function () {
 		var metodo = 'POST';
+		var urlAluno = urlApi + 'alunos/';
 		if ($scope.aluno.id) {
 			metodo = 'PUT';
+			urlAluno = urlApi + 'alunos/' + $scope.aluno.id;
 		}
 		$http({
 			method: metodo,
-			url: urlApi + 'alunos/',
+			url: urlAluno,
 			data: $scope.aluno
 		}).then(function (response) {
 			$scope.listaAluno.push(response.data);
@@ -39,7 +41,7 @@ app.controller("AlunoController", function ($scope, $http) {
 
 		$http({
 			method: 'DELETE',
-			url: urlApi + 'alunos/'+ id
+			url: urlApi + 'alunos/' + id
 		}).then(function (response) {
 			$scope.listaAluno.splice(id, 1);
 			$scope.listarAlunos();
@@ -47,6 +49,10 @@ app.controller("AlunoController", function ($scope, $http) {
 			console.log('error ao deletar aluno ');
 		});
 	};
+
+	$scope.alterarAluno = function (aluno) {
+		$scope.aluno = angular.copy(aluno);
+	}
 
 	$scope.cancelarAlteracaoAluno = function (aluno) {
 		$scope.aluno = {};
