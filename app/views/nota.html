@@ -62,7 +62,7 @@
 
                     <a class="btn btn-warning btn-xs" ng-click="alterarNota(nota)">Editar</a>
                     <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal"
-                        ng-click="deleteNota(nota.id)">Excluir</a>
+                        ng-click="alterarNota(nota)">Excluir</a>
                 </td>
             </tr>
         </tbody>
@@ -83,7 +83,7 @@
             </div>
             <div class="modal-footer">
 
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Sim</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deleteNota(nota.id)">Sim</button>
 
                 <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
             </div>

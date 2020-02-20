@@ -20,13 +20,16 @@ app.controller("AdmController", function ($scope, $http) {
 		var urlMateria = urlApi + 'materias/';
 		if ($scope.materia.id) {
 			metodo = 'PUT';
-			urlAluno = urlApi + 'materias/' + $scope.materia.id;
+			urlMateria = urlApi + 'materias/' + $scope.materia.id;
 		}
 		$http({
 			method: metodo,
 			url: urlMateria,
 			data: $scope.materia
 		}).then(function (response){
+			$scope.listaMateria.push(response.data);
+			$scope.listarMaterias();
+		}, function (response){
 			console.log('erro ao salvar materia');
 		});
     };
@@ -72,14 +75,17 @@ app.controller("AdmController", function ($scope, $http) {
 		$http({
 			method: metodo,
 			url: urlPeriodo,
-			data: $scope.Periodo
+			data: $scope.periodo
 		}).then(function (response){
             $scope.listaPeriodo.push(response.data);
 			$scope.listarPeriodos();
 		}, function (response) {
 			console.log('erro ao salvar periodo');
+			console.log(response);
+			console.log(response.data);
 		});
-    };
+	};
+	
     $scope.listarPeriodos = function () {
 		$http({
 			method: 'GET',
@@ -120,9 +126,13 @@ app.controller("AdmController", function ($scope, $http) {
 		$http({
 			method: metodo,
 			url: urlBoletim,
-			data: $scope.Boletim
+			data: $scope.boletim
 		}).then(function (response){
+			$scope.listaBoletim.push(response.data);
+			$scope.listarBoletins();
+		},function(response){
 			console.log('erro ao salvar boletim');
+			console.log(response.data);
 		});
 	};
 
@@ -133,6 +143,15 @@ app.controller("AdmController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaBoletim = response.data;
 		}, function (response) { console.log('erro ao listar boletins') });
+	}
+
+	$scope.listarAlunos = function () {
+		$http({
+			method: 'GET',
+			url: urlApi + 'alunos/'
+		}).then(function (response) {
+			$scope.listaAluno = response.data;
+		}, function (response) { console.log('erro ao listar alunos') });
 	}
 
 

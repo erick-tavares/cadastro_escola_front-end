@@ -1,89 +1,114 @@
-<h3 class="page-header">Registros administrativos</h3>
+<header>
+    <h3 class="page-header">Registros administrativos</h3>
+</header>
 
-<div class="row">
-    <form>
-        <div class="form-group col-md-6">
-            <label for="inputMateriaNome">Mat&eacute;ria</label>
-            <input type="text" class="form-control" id="inputMateriaNome" ng-model="materia.nome">
-            <br>
-            <br>
-            <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarMaterias()" />
-            <br><br>
-            <table class="table table-hover table-bordered" id="tabelaMateria" cellspacing="0" cellpadding="0">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Mat&eacute;ria</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="materia in listaMateria">
-                        <td>{{materia.id }}</td>
-                        <td>{{materia.nome }}</td>
-                        <td class="actions">
-
-                            <a class="btn btn-warning btn-xs" ng-click="alterarMateria(materia)">Editar</a>
-                            <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal"
-                                ng-click="deleteMateria(materia.id)">Excluir</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-
-            <h3>Per&iacute;odo</h3>
-            <label for="inputPeriodoInicio">In&iacute;cio do per&iacute;odo</label>
-            <input type="text" class="form-control" id="inputPeriodoInicio" ng-model="periodo.dtInicio">
-
-            <label for="inputPeriodoFim">Fim do per&iacute;odo</label>
-            <input type="text" class="form-control" id="inputPeriodoFim" ng-model="periodo.dtFim">
-
-            <label for="inputPeriodoDescricao">Descri&ccedil;&atilde;o do per&iacute;odo</label>
-            <input type="text" class="form-control" id="inputPeriodoDescricao" ng-model="periodo.descricao">
-            <br>
-
-            <br>
-            <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarPeriodos()" />
-            <br><br>
-            <table class="table table-hover table-bordered" id="tabelaPeriodo" cellspacing="0" cellpadding="0">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>In&iacute;cio do per&iacute;odo</th>
-                        <th>Fim do per&iacute;odo</th>
-                        <th>Descri&ccedil;&atilde;o do per&iacute;odo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="periodo in listaPeriodo">
-                        <td>{{periodo.id }}</td>
-                        <td>{{periodo.dtInicio }}</td>
-                        <td>{{periodo.dtFim }}</td>
-                        <td>{{periodo.descricao }}</td>
-                        <td class="actions">
-
-                            <a class="btn btn-warning btn-xs" ng-click="alterarPeriodo(periodo)">Editar</a>
-                            <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal"
-                                ng-click="deletePeriodo(periodo.id)">Excluir</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+<body>
+    <!-- Materia -->
+    <div class="form-group col-md-8">
+        <label for="inputMateriaNome">Mat&eacute;ria</label>
+        <input type="text" class="form-control" id="inputMateriaNome" ng-model="materia.nome">
+        <br>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary" ng-click=salvarMateria()>Salvar</button>
+            <button type="button" class="btn btn-default" ng-click=cancelarAlteracaoMateria()>Cancelar</a>
         </div>
+        <br><br><br>
+        <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarMaterias()" />
+        <br><br>
+        <table class="table table-hover table-bordered" id="tabelaMateria" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Mat&eacute;ria</th>
+                    <th class="actions">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="materia in listaMateria">
+                    <td>{{materia.id }}</td>
+                    <td>{{materia.nome }}</td>
+                    <td class="actions">
+                        <a class="btn btn-warning btn-xs" ng-click="alterarMateria(materia)">Editar</a>
+                        <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal-materia"
+                            ng-click="alterarMateria(materia)">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br><br>
 
+        <!-- Periodo -->
+        <h3>Per&iacute;odo</h3>
+        <label for="inputPeriodoInicio">In&iacute;cio do per&iacute;odo</label>
+        <input type="date" class="form-control" id="inputPeriodoInicio" ng-model="periodo.dtInicio">
+
+        <label for="inputPeriodoFim">Fim do per&iacute;odo</label>
+        <input type="date" class="form-control" id="inputPeriodoFim" ng-model="periodo.dtFim">
+
+        <label for="inputPeriodoDescricao">Descri&ccedil;&atilde;o do per&iacute;odo</label>
+        <input type="text" class="form-control" id="inputPeriodoDescricao" ng-model="periodo.descricao">
+        <br>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary" ng-click=salvarPeriodo()>Salvar</button>
+                <button type="button" class="btn btn-default" ng-click=cancelarAlteracaoPeriodo()>Cancelar</a>
+            </div>
+        </div>
+        <br>
+        <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarPeriodos()" />
+        <br><br>
+        <table class="table table-hover table-bordered" id="tabelaPeriodo" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>In&iacute;cio do per&iacute;odo</th>
+                    <th>Fim do per&iacute;odo</th>
+                    <th>Descri&ccedil;&atilde;o do per&iacute;odo</th>
+                    <th class="actions">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="periodo in listaPeriodo">
+                    <td>{{periodo.id }}</td>
+                    <td>{{periodo.dtInicio | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{periodo.dtFim | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{periodo.descricao }}</td>
+                    <td class="actions">
+
+                        <a class="btn btn-warning btn-xs" ng-click="alterarPeriodo(periodo)">Editar</a>
+                        <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal-periodo"
+                            ng-click="alterarPeriodo(periodo)">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br><br>
+
+        <!-- Boletim -->
+        <h3>Boletim</h3>
+        <label for="inputBoletimId">Id</label>
+        <input type="text" class="form-control" id="inputBoletimId" value="{{boletim.id}}" disabled>
+        <br> <br>
 
         <label for="inputPeriodoBoletim">Per&iacute;odo do boletim</label>
-        <select id="PeriodoSelector" class="form-control" ng-init="listarPeriodos()" ng-model="boletim.periodoId">
+        <select id="PeriodoSelector" class="form-control" ng-init ng-model="boletim.periodoId">
             <option ng-repeat="periodo in listaPeriodo" value="{{periodo.id}}">{{periodo.descricao}}</option>
         </select>
 
         <label for="inputAlunoBoletim">Aluno do boletim</label>
-        <select id="AlunoSelector" class="form-control" ng-init="listarAlunos()" ng-model="nota.alunoId">
+        <select id="AlunoSelector" class="form-control" ng-init="listarAlunos()" ng-model="boletim.alunoId">
             <option ng-repeat="aluno in listaAluno" value="{{aluno.id}}">{{aluno.nome}}</option>
         </select>
-
+        <br><br>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary" ng-click=salvarBoletim()>Salvar</button>
+                <button type="button" class="btn btn-default" ng-click=cancelarAlteracaoBoletim()>Cancelar</a>
+            </div>
+        </div>
         <br>
-        <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarMaterias()" />
+        <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarBoletins()" />
         <br><br>
         <table class="table table-hover table-bordered" id="tabelaBoletim" cellspacing="0" cellpadding="0">
             <thead>
@@ -91,55 +116,81 @@
                     <th>ID</th>
                     <th>Per&iacute;odo do boletim</th>
                     <th>Aluno do boletim</th>
+                    <th class="actions">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="boletim in listaBoletim">
                     <td>{{boletim.id }}</td>
                     <td>{{boletim.periodoId }}</td>
-                    <td>{{periodo.alunoId }}</td>
+                    <td>{{boletim.alunoId }}</td>
                     <td class="actions">
 
                         <a class="btn btn-warning btn-xs" ng-click="alterarBoletim(boletim)">Editar</a>
-                        <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal"
-                            ng-click="deleteBoletim(boletim.id)">Excluir</a>
+                        <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal-boletim"
+                            ng-click="alterarBoletim(boletim)">Excluir</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-</div>
-</form>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <button type="submit" class="btn btn-primary" ng-click=salvarMateria() ng-click=salvarPeriodo()
-            ng-click=salvarBoletim()>Salvar</button>
-        <button type="button" class="btn btn-default">Cancelar</a>
     </div>
-</div>
 
-</div>
-<!-- Modal -->
-<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="modalLabel">Excluir dado</h4>
-            </div>
-            <div class="modal-body">
-                Deseja realmente excluir este dado?
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Sim</button>
-
-                <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+    <!-- Modal -->
+    <div class="modal fade" id="delete-modal-materia" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Excluir mat&eacute;ria</h4>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente excluir esta mat&eacute;ria?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deleteMateria(materia.id)">Sim</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="modal fade" id="delete-modal-periodo" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Excluir per&iacute;odo</h4>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente excluir este per&iacute;odo?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deletePeriodo(periodo.id)">Sim</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="delete-modal-boletim" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Excluir boletim</h4>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente excluir este boletim?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deleteBoletim(boletim.id)">Sim</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
