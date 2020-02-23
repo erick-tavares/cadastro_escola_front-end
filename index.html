@@ -1,54 +1,56 @@
 <!doctype html>
 <html ng-app="appEscolaHB">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta http-equiv="content-language" content="pt-br" />
-        <title>Escola HB</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
-        <script src="app/app.js"></script>
-        <script src="app/ngmask.min.js"></script>
-        <script src="app/routes/route.js"></script>
-        <script src="app/controllers/home-controller.js"></script>
-        <script src="app/controllers/aluno-controller.js"></script>
-        <script src="app/controllers/nota-controller.js"></script>
-        <script src="app/controllers/adm-controller.js"></script>
-        <script src="app/controllers/boletim-controller.js"></script>
-       
-   </head>
-    <body>
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/">Escola HB</a>
-                </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#/home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">Boletim
-                        <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                           <li><a href="#/boletim">Imprimir</a></li>
-                         </ul>
-                         </li>
-                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown">Cadastrar
-                            <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                               <li><a href="#/aluno">Aluno</a></li>
-                             <li><a href="#/nota">Nota</a></li>
-                             <li><a href="#/adm">Administrativo</a></li>
-                             </ul>
-                             </li>
-                </ul>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="pt-br" />
+    <title>Escola HB</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/ngmask.min.js"></script>
+    <script src="app/routes/route.js"></script>
+    <script src="app/controllers/home-controller.js"></script>
+    <script src="app/controllers/aluno-controller.js"></script>
+    <script src="app/controllers/nota-controller.js"></script>
+    <script src="app/controllers/adm-controller.js"></script>
+    <script src="app/controllers/boletim-controller.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Escola HB</a>
             </div>
-        </nav> 
-        <div ng-view class="jumbotron text-center"></div>
-        <footer class="text-center">
-        </footer>
-   </body>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Boletim
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/boletim">Imprimir</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Cadastrar
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/aluno">Aluno</a></li>
+                        <li><a href="#/nota">Nota</a></li>
+                        <li><a href="#/adm">Administrativo</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div ng-view class="jumbotron text-center"></div>
+    <footer class="text-center">
+    </footer>
+</body>
+
 </html>
-    

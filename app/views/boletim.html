@@ -1,31 +1,27 @@
-<header><h3 class="page-header">Boletins</h3></header>
+<header>
+    <h3 class="page-header">Boletins</h3>
+</header>
 
 <body>
-
     <div class="form-group col-md-6">
         <label for="inputAluno">Selecione um aluno</label>
         <select id="AlunoSelector" class="form-control" ng-init="listarAlunos()" ng-model="aluno.id"
-            ng-options="aluno.id as aluno.nome for aluno in listaAluno"
-            ng-change="listarBoletinsAluno(aluno.id)">
+            ng-options="aluno.id as aluno.nome for aluno in listaAluno" ng-change="listarBoletinsAluno(aluno.id)">
             <option value="{{aluno.id}}">{{aluno.nome}}</option>
         </select>
         <br>
-
         <label for="inputBoletim">Selecione um boletim</label>
         <select id="BoletimSelector" class="form-control" ng-model="boletim.id"
             ng-options="boletim.id as boletim.id for boletim in listaBoletimDoAluno">
             <option value="{{boletim.id}}">{{boletim.id}}</option>
         </select>
-<br>
-
+        <br>
         <div class="row">
             <div class="col-md-12">
                 <button type="submit" class="btn btn-primary" ng-click=downloadBoletim(boletim.id)>Download em PDF</button>
                 <button type="button" class="btn btn-default" ng-click=showBoletim(boletim.id)>Download em html</a>
-                    
             </div>
         </div>
-
         <a title='Imprimir conteúdo' href='javascript:window.print()'>Imprimir boletim</a>
     </div>
 

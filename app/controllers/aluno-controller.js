@@ -22,9 +22,11 @@ app.controller("AlunoController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaAluno.push(response.data);
 			$scope.listarAlunos();
+			console.log(response.status);
 		}, function (response) {
 			console.log('erro ao salvar aluno');
 			console.log(response.data);
+			console.log(response.status);
 		});
 	};
 
@@ -34,7 +36,11 @@ app.controller("AlunoController", function ($scope, $http) {
 			url: urlApi + 'alunos/'
 		}).then(function (response) {
 			$scope.listaAluno = response.data;
-		}, function (response) { console.log('erro ao listar alunos') });
+			console.log(response.status);
+		}, function (response) { 
+			console.log('erro ao listar alunos');
+			console.log(response.status);
+		 });
 	}
 
 	$scope.deleteAluno = function (id) {
@@ -45,8 +51,10 @@ app.controller("AlunoController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaAluno.splice(id, 1);
 			$scope.listarAlunos();
+			console.log(response.status);
 		}, function (response) {
 			console.log('error ao deletar aluno ');
+			console.log(response.status);
 		});
 	};
 

@@ -10,7 +10,6 @@ app.controller("BoletimController", function ($scope, $http) {
 
     var urlApi = 'http://localhost:8080/';
 
-
     $scope.listarBoletinsAluno = function (id) {
         $http({
             method: 'GET',
@@ -18,9 +17,12 @@ app.controller("BoletimController", function ($scope, $http) {
         }).then(function (response) {
             $scope.listaBoletimDoAluno = response.data;
             console.log(response.data)
-        }, function (response) { console.log('erro ao listar boletins') });
+            console.log(response.status);
+        }, function (response) { 
+            console.log('erro ao listar boletins')
+            console.log(response.status);
+         });
     }
-
 
     $scope.listarAlunos = function () {
         $http({
@@ -29,9 +31,12 @@ app.controller("BoletimController", function ($scope, $http) {
         }).then(function (response) {
             $scope.listaAluno = response.data;
             console.log(response)
-        }, function (response) { console.log('erro ao listar alunos') });
+            console.log(response.status);
+        }, function (response) { 
+            console.log('erro ao listar alunos');
+            console.log(response.status);
+         });
     }
-
 
     $scope.downloadBoletim = function (boletim) {
         $http({
@@ -39,7 +44,11 @@ app.controller("BoletimController", function ($scope, $http) {
             url: urlApi + 'boletins/report/' + boletim + '/pdf'
         }).then(function (response) {
             console.log(response)
-        }, function (response) { console.log('erro ao baixar boletim') });
+            console.log(response.status);
+        }, function (response) { 
+            console.log('erro ao baixar boletim');
+            console.log(response.status);
+         });
     }
 
     $scope.showBoletim = function (boletim) {
@@ -48,7 +57,11 @@ app.controller("BoletimController", function ($scope, $http) {
             url: urlApi + 'boletins/report/' + boletim + '/html'
         }).then(function (response) {
             console.log(response)
-        }, function (response) { console.log('erro ao mostrar boletim') });
+            console.log(response.status);
+        }, function (response) { 
+            console.log('erro ao mostrar boletim');
+            console.log(response.status);
+         });
     }
 
 });

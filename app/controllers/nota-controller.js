@@ -13,11 +13,7 @@ app.controller("NotaController", function ($scope, $http) {
 	$scope.listaAluno = [];
 	$scope.aluno = {};
 
-	$scope.listaPeriodo = [];
-	$scope.periodo = {};
-
 	var urlApi = 'http://localhost:8080/';
-
 
 	$scope.salvarNota = function () {
 		var metodo = 'POST';
@@ -33,10 +29,12 @@ app.controller("NotaController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaNota.push(response.data);
 			$scope.listarNotas();
+			console.log(response.status);
 		}, function (response) {
 			console.log('erro ao salvar nota');
 			console.log(response.data);
 			console.log(response);
+			console.log(response.status);
 		});
 	};
 
@@ -47,7 +45,11 @@ app.controller("NotaController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaNota = response.data;
 			console.log(response)
-		}, function (response) { console.log('erro ao listar notas') });
+			console.log(response.status);
+		}, function (response) { 
+			console.log('erro ao listar notas');
+			console.log(response.status);
+		 });
 	}
 
 	$scope.listarBoletins = function () {
@@ -57,9 +59,12 @@ app.controller("NotaController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaBoletim = response.data;
 			console.log(response)
-		}, function (response) { console.log('erro ao listar boletins') });
+			console.log(response.status);
+		}, function (response) {
+			 console.log('erro ao listar boletins')
+			 console.log(response.status);
+			 });
 	}
-
 
 	$scope.listarBoletinsAluno = function (id) {
 		$http({
@@ -68,10 +73,12 @@ app.controller("NotaController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaBoletimDoAluno = response.data;
 			console.log(response.data)
-		}, function (response) { console.log('erro ao listar boletins') });
+			console.log(response.status);
+		}, function (response) { 
+			console.log('erro ao listar boletins');
+			console.log(response.status);
+		 });
 	}
-
-
 
 	$scope.listarAlunos = function () {
 		$http({
@@ -80,7 +87,11 @@ app.controller("NotaController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaAluno = response.data;
 			console.log(response)
-		}, function (response) { console.log('erro ao listar alunos') });
+			console.log(response.status);
+		}, function (response) { 
+			onsole.log('erro ao listar alunos');
+			console.log(response.status);
+		});
 	}
 
 	$scope.listarMaterias = function () {
@@ -90,42 +101,24 @@ app.controller("NotaController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaMateria = response.data;
 			console.log(response)
-		}, function (response) { console.log('erro ao listar materias') });
+			console.log(response.status);
+		}, function (response) { 
+			console.log('erro ao listar materias');
+			console.log(response.status);
+		 });
 	}
-
-	$scope.listarPeriodos = function () {
-		$http({
-			method: 'GET',
-			url: urlApi + 'periodos/'
-		}).then(function (response) {
-			$scope.listaPeriodo = response.data;
-			console.log(response)
-		}, function (response) { console.log('erro ao listar periodos') });
-	}
-
-	$scope.findAluno = function (id) {
-		$http({
-			method: 'GET',
-			url: urlApi + 'alunos/cadastro/' + id
-		}).then(function (response) {
-			$scope.aluno = response.data;
-		}, function (response) {
-			console.log('error ao listar aluno ');
-		});
-	};
-
-
 
 	$scope.deleteNota = function (id) {
-
 		$http({
 			method: 'DELETE',
 			url: urlApi + 'notas/' + id
 		}).then(function (response) {
 			$scope.listaNota.splice(id, 1);
 			$scope.listarNotas();
+			console.log(response.status);
 		}, function (response) {
 			console.log('error ao deletar nota ');
+			console.log(response.status);
 		});
 	};
 

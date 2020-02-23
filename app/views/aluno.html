@@ -1,25 +1,19 @@
-<h3 class="page-header">Registrar aluno</h3>
+<header>
+    <h3 class="page-header">Registrar aluno</h3>
+</header>
 
 <body>
-    <div class="row">
-        <form>
-            <div class="form-group col-md-6">
+    <div class="form-group col-md-8">
 
-                <label for="inputNome">Nome</label>
-                <input type="text" class="form-control" id="inputNome" ng-model="aluno.nome">
+        <label for="inputNome">Nome</label>
+        <input type="text" class="form-control" id="inputNome" ng-model="aluno.nome">
 
+        <label for="inputEndereco">Endere&ccedil;o</label>
+        <input type="text" class="form-control" id="inputEndereco" ng-model="aluno.endereco">
 
-                <label for="inputEndereco">Endere&ccedil;o</label>
-                <input type="text" class="form-control" id="inputEndereco" ng-model="aluno.endereco">
-
-
-                <label for="inputTelefone">Telefone</label>
-                <input type="text" class="form-control" id="inputTelefone" ng-model="aluno.telefone" 
-                mask='(99)9999-9999'>
-            </div>
-        </form>
-
-
+        <label for="inputTelefone">Telefone</label>
+        <input type="text" class="form-control" id="inputTelefone" ng-model="aluno.telefone" mask='(99)9999-9999'>
+        <br>
         <div class="row">
             <div class="col-md-12">
                 <button type="submit" class="btn btn-primary" ng-click=salvarAluno()>Salvar</button>
@@ -27,9 +21,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     <div class="table-responsive col-md-12">
         <br>
@@ -54,10 +45,9 @@
                     <td>{{aluno.telefone}}</td>
                     <td class="actions">
 
-
                         <a class="btn btn-warning btn-xs" ng-click="alterarAluno(aluno)">Editar</a>
                         <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal"
-                           ng-click="alterarAluno(aluno)" >Excluir</a>
+                            ng-click="alterarAluno(aluno)">Excluir</a>
                     </td>
                 </tr>
             </tbody>
@@ -77,13 +67,11 @@
                     Deseja realmente excluir este aluno?
                 </div>
                 <div class="modal-footer">
-
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deleteAluno(aluno.id)">Sim</button>
-
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        ng-click="deleteAluno(aluno.id)">Sim</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
                 </div>
             </div>
         </div>
     </div>
-
 </body>

@@ -1,22 +1,20 @@
 app.controller("AdmController", function ($scope, $http) {
 
 	$scope.listaAluno = [];
-    $scope.aluno = {};
+	$scope.aluno = {};
 
-    $scope.materia = {};
-    $scope.listaMateria = [];
+	$scope.materia = {};
+	$scope.listaMateria = [];
 
-    $scope.boletim = {};
-    $scope.listaPeriodo = [];
+	$scope.boletim = {};
+	$scope.listaPeriodo = [];
 
-    $scope.listaPeriodo = [];
+	$scope.listaPeriodo = [];
 	$scope.periodo = {};
-
-	
 
 	var urlApi = 'http://localhost:8080/';
 
-    //Materia
+	//Materia
 	$scope.salvarMateria = function () {
 		var metodo = 'POST';
 		var urlMateria = urlApi + 'materias/';
@@ -28,32 +26,40 @@ app.controller("AdmController", function ($scope, $http) {
 			method: metodo,
 			url: urlMateria,
 			data: $scope.materia
-		}).then(function (response){
+		}).then(function (response) {
 			$scope.listaMateria.push(response.data);
 			$scope.listarMaterias();
-		}, function (response){
+			console.log(response.status);
+		}, function (response) {
 			console.log('erro ao salvar materia');
+			console.log(response.status);
 		});
-    };
-    
-    $scope.listarMaterias = function () {
+	};
+
+	$scope.listarMaterias = function () {
 		$http({
 			method: 'GET',
 			url: urlApi + 'materias/'
 		}).then(function (response) {
 			$scope.listaMateria = response.data;
-		}, function (response) { console.log('erro ao listar materias') });
+			console.log(response.status);
+		}, function (response) {
+			console.log('erro ao listar materias');
+			console.log(response.status);
+		});
 	}
 
-    $scope.deleteMateria = function (id) {
+	$scope.deleteMateria = function (id) {
 		$http({
 			method: 'DELETE',
 			url: urlApi + 'materias/' + id
 		}).then(function (response) {
 			$scope.listaMateria.splice(id, 1);
 			$scope.listarMaterias();
+			console.log(response.status);
 		}, function (response) {
 			console.log('error ao deletar materia ');
+			console.log(response.status);
 		});
 	};
 
@@ -65,8 +71,7 @@ app.controller("AdmController", function ($scope, $http) {
 		$scope.materia = {};
 	};
 
-
-//Periodo
+	//Periodo
 	$scope.salvarPeriodo = function () {
 		var metodo = 'POST';
 		var urlPeriodo = urlApi + 'periodos/';
@@ -78,34 +83,42 @@ app.controller("AdmController", function ($scope, $http) {
 			method: metodo,
 			url: urlPeriodo,
 			data: $scope.periodo
-		}).then(function (response){
-            $scope.listaPeriodo.push(response.data);
+		}).then(function (response) {
+			$scope.listaPeriodo.push(response.data);
 			$scope.listarPeriodos();
+			console.log(response.status);
 		}, function (response) {
 			console.log('erro ao salvar periodo');
 			console.log(response);
 			console.log(response.data);
+			console.log(response.status);
 		});
 	};
-	
-    $scope.listarPeriodos = function () {
+
+	$scope.listarPeriodos = function () {
 		$http({
 			method: 'GET',
 			url: urlApi + 'periodos/'
 		}).then(function (response) {
 			$scope.listaPeriodo = response.data;
-		}, function (response) { console.log('erro ao listar periodos') });
+			console.log(response.status);
+		}, function (response) {
+			console.log('erro ao listar periodos');
+			console.log(response.status);
+		});
 	}
 
-    $scope.deletePeriodo = function (id) {
+	$scope.deletePeriodo = function (id) {
 		$http({
 			method: 'DELETE',
 			url: urlApi + 'periodos/' + id
 		}).then(function (response) {
 			$scope.listaPeriodo.splice(id, 1);
 			$scope.listarPeriodos();
+			console.log(response.status);
 		}, function (response) {
 			console.log('error ao deletar periodo ');
+			console.log(response.status);
 		});
 	};
 
@@ -117,7 +130,7 @@ app.controller("AdmController", function ($scope, $http) {
 		$scope.periodo = {};
 	};
 
-//Boletim
+	//Boletim
 	$scope.salvarBoletim = function () {
 		var metodo = 'POST';
 		var urlBoletim = urlApi + 'boletins/';
@@ -129,12 +142,14 @@ app.controller("AdmController", function ($scope, $http) {
 			method: metodo,
 			url: urlBoletim,
 			data: $scope.boletim
-		}).then(function (response){
+		}).then(function (response) {
 			$scope.listaBoletim.push(response.data);
 			$scope.listarBoletins();
-		},function(response){
+			console.log(response.status);
+		}, function (response) {
 			console.log('erro ao salvar boletim');
 			console.log(response.data);
+			console.log(response.status);
 		});
 	};
 
@@ -144,7 +159,11 @@ app.controller("AdmController", function ($scope, $http) {
 			url: urlApi + 'boletins/'
 		}).then(function (response) {
 			$scope.listaBoletim = response.data;
-		}, function (response) { console.log('erro ao listar boletins') });
+			console.log(response.status);
+		}, function (response) {
+			console.log('erro ao listar boletins')
+			console.log(response.status);
+		});
 	}
 
 	$scope.listarAlunos = function () {
@@ -153,9 +172,12 @@ app.controller("AdmController", function ($scope, $http) {
 			url: urlApi + 'alunos/'
 		}).then(function (response) {
 			$scope.listaAluno = response.data;
-		}, function (response) { console.log('erro ao listar alunos') });
+			console.log(response.status);
+		}, function (response) {
+			console.log('erro ao listar alunos');
+			console.log(response.status);
+		});
 	}
-
 
 	$scope.deleteBoletim = function (id) {
 
@@ -165,8 +187,10 @@ app.controller("AdmController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaBoletim.splice(id, 1);
 			$scope.listarBoletins();
+			console.log(response.status);
 		}, function (response) {
 			console.log('error ao deletar boletim ');
+			console.log(response.status);
 		});
 	};
 
