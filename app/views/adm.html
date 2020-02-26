@@ -56,8 +56,9 @@
             </div>
         </div>
         <br>
-        <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarPeriodos()" />
+        <input type="button" value="Pesquisar"  class="btn btn-default" ng-click="listarPeriodos()" />
         <br><br>
+        <p>{{periodo.dtInicio | date:'dd/MM/yyyy'}}</p>
         <table class="table table-hover table-bordered" id="tabelaPeriodo" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
@@ -69,10 +70,11 @@
                 </tr>
             </thead>
             <tbody>
+
                 <tr ng-repeat="periodo in listaPeriodo">
                     <td>{{periodo.id }}</td>
-                    <td>{{periodo.dtInicio | date: 'dd/MM/yyyy'}}</td>
-                    <td>{{periodo.dtFim | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{periodo.dtInicio | date:'dd/MM/yyyy'}}</td>
+                    <td>{{periodo.dtFim | date : 'dd/MM/yyyy'}}</td>
                     <td>{{periodo.descricao }}</td>
                     <td class="actions">
 
@@ -108,7 +110,7 @@
             </div>
         </div>
         <br>
-        <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarBoletins()" />
+        <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarBoletins()" ng-click="listarPeriodos()" ng-click="listarAlunos()"/>
         <br><br>
         <table class="table table-hover table-bordered" id="tabelaBoletim" cellspacing="0" cellpadding="0">
             <thead>
@@ -122,9 +124,11 @@
             <tbody>
                 <tr ng-repeat="boletim in listaBoletim">
                     <td>{{boletim.id }}</td>
-                    <td>{{boletim.periodoId }}</td>
-                    <td>{{boletim.alunoId }}</td>
+                    <td ng-repeat="periodo in listaPeriodo" ng-if="periodo.id == boletim.periodoId">{{periodo.descricao}}</td>
+                    <td ng-repeat="aluno in listaAluno" ng-if="aluno.id == boletim.alunoId"> {{aluno.nome}}</td>
+
                     <td class="actions">
+
 
                         <a class="btn btn-warning btn-xs" ng-click="alterarBoletim(boletim)">Editar</a>
                         <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal-boletim"

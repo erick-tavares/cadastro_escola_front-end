@@ -1,1 +1,1 @@
-var app = angular.module('appEscolaHB',['ngRoute']);
+var app = angular.module('appEscolaHB',['ngRoute','ngMask']);

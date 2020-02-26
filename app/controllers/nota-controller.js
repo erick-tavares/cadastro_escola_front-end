@@ -7,12 +7,14 @@ app.controller("NotaController", function ($scope, $http) {
 	$scope.materia = {};
 
 	$scope.listaBoletim = [];
+	$scope.listaBoletimDoAluno = [];
 	$scope.boletim = {};
 
 	$scope.listaAluno = [];
 	$scope.aluno = {};
 
-
+	$scope.listaPeriodo = [];
+	$scope.periodo = {};
 
 	var urlApi = 'http://localhost:8080/';
 
@@ -33,6 +35,8 @@ app.controller("NotaController", function ($scope, $http) {
 			$scope.listarNotas();
 		}, function (response) {
 			console.log('erro ao salvar nota');
+			console.log(response.data);
+			console.log(response);
 		});
 	};
 
@@ -56,6 +60,19 @@ app.controller("NotaController", function ($scope, $http) {
 		}, function (response) { console.log('erro ao listar boletins') });
 	}
 
+
+	$scope.listarBoletinsAluno = function (id) {
+		$http({
+			method: 'GET',
+			url: urlApi + 'boletins/aluno/' + id
+		}).then(function (response) {
+			$scope.listaBoletimDoAluno = response.data;
+			console.log(response.data)
+		}, function (response) { console.log('erro ao listar boletins') });
+	}
+
+
+
 	$scope.listarAlunos = function () {
 		$http({
 			method: 'GET',
@@ -76,41 +93,48 @@ app.controller("NotaController", function ($scope, $http) {
 		}, function (response) { console.log('erro ao listar materias') });
 	}
 
+	$scope.listarPeriodos = function () {
+		$http({
+			method: 'GET',
+			url: urlApi + 'periodos/'
+		}).then(function (response) {
+			$scope.listaPeriodo = response.data;
+			console.log(response)
+		}, function (response) { console.log('erro ao listar periodos') });
+	}
 
-	
 	$scope.findAluno = function (id) {
 		$http({
 			method: 'GET',
 			url: urlApi + 'alunos/cadastro/' + id
 		}).then(function (response) {
-			$scope.aluno === response;
+			$scope.aluno = response.data;
 		}, function (response) {
-			console.log('error ao deletar nota ');
+			console.log('error ao listar aluno ');
 		});
 	};
 
 
 
+	$scope.deleteNota = function (id) {
 
-$scope.deleteNota = function (id) {
+		$http({
+			method: 'DELETE',
+			url: urlApi + 'notas/' + id
+		}).then(function (response) {
+			$scope.listaNota.splice(id, 1);
+			$scope.listarNotas();
+		}, function (response) {
+			console.log('error ao deletar nota ');
+		});
+	};
 
-	$http({
-		method: 'DELETE',
-		url: urlApi + 'notas/' + id
-	}).then(function (response) {
-		$scope.listaNota.splice(id, 1);
-		$scope.listarNotas();
-	}, function (response) {
-		console.log('error ao deletar nota ');
-	});
-};
+	$scope.alterarNota = function (nota) {
+		$scope.nota = angular.copy(nota);
+	}
 
-$scope.alterarNota = function (nota) {
-	$scope.nota = angular.copy(nota);
-}
-
-$scope.cancelarAlteracaoNota = function (nota) {
-	$scope.nota = {};
-};
+	$scope.cancelarAlteracaoNota = function (nota) {
+		$scope.nota = {};
+	};
 
 });

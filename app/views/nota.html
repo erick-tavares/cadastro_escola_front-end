@@ -1,30 +1,31 @@
+<header></header>
 <h3 class="page-header">Registrar nota</h3>
 
 <div class="row">
     <form>
-
         <div class="form-group col-md-6">
+            <label for="inputAluno">Aluno</label>
+            <select id="AlunoSelector" class="form-control" ng-init="listarAlunos()" ng-model="nota.alunoId"
+                ng-options="aluno.id as aluno.nome for aluno in listaAluno"
+                ng-change="listarBoletinsAluno(nota.alunoId)">
+                <option value="{{aluno.id}}">{{aluno.nome}}</option>
+            </select>
 
             <label for="inputBoletim">Boletim</label>
-            <select id="BoletimSelector" class="form-control" ng-init="listarBoletins()"ng-model="nota.boletimId">
-                <option ng-repeat="boletim in listaBoletim" value="{{boletim.id}}">{{boletim.id}}</option>
-              </select>
-
-            <label for="inputMateria">Aluno</label>
-            <select id="AlunoSelector" class="form-control" ng-init="listarAlunos()" ng-model="nota.alunoId">
-                <option ng-repeat="aluno in listaAluno" value="{{aluno.id}}">{{aluno.nome}}</option>
-              </select>
+            <select id="BoletimSelector" class="form-control" ng-model="nota.boletimId"
+                ng-options="boletim.id as boletim.id for boletim in listaBoletimDoAluno">
+                <option value="{{boletim.id}}">{{boletim.id}}</option>
+            </select>
 
             <label for="inputMateria">Mat&eacute;ria</label>
             <select id="MateriaSelector" class="form-control" ng-init="listarMaterias()" ng-model="nota.materiaId">
                 <option ng-repeat="materia in listaMateria" value="{{materia.id}}">{{materia.nome}}</option>
-              </select>
+            </select>
 
             <label for="inputNota">Nota</label>
             <input type="text" class="form-control" id="inputNota" ng-model="nota.nota">
         </div>
     </form>
-
 
     <div class="row">
         <div class="col-md-12">
@@ -36,7 +37,8 @@
 
 <div class="table-responsive col-md-12">
     <br>
-    <input type="button" value="Pesquisar" class="btn btn-default" ng-click="findAluno(aluno)" ng-click="listarNotas()" />
+    <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarNotas()" ng-click="listarAlunos()"
+        ng-click="listarMaterias()" ng-click="listarBoletins()" ng-click="listarPeriodos()" />
     <br><br>
 
     <table class="table table-hover table-bordered" id="tabelaNota" cellspacing="0" cellpadding="0">
@@ -54,12 +56,10 @@
             <tr ng-repeat="nota in listaNota">
                 <td>{{nota.id }}</td>
                 <td>{{nota.nota }}</td>
-                <td>{{nota.materiaId }}</td>
-                <td>{{nota.alunoId}}</td>
+                <td ng-repeat="materia in listaMateria" ng-if="materia.id == nota.materiaId">{{materia.nome}}</td>
+                <td ng-repeat="aluno in listaAluno" ng-if="aluno.id == nota.alunoId"> {{aluno.nome}}</td>
                 <td>{{nota.boletimId}}</td>
                 <td class="actions">
-
-
                     <a class="btn btn-warning btn-xs" ng-click="alterarNota(nota)">Editar</a>
                     <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal"
                         ng-click="alterarNota(nota)">Excluir</a>
@@ -83,7 +83,8 @@
             </div>
             <div class="modal-footer">
 
-                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deleteNota(nota.id)">Sim</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    ng-click="deleteNota(nota.id)">Sim</button>
 
                 <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
             </div>

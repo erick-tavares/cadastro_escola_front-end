@@ -12,6 +12,8 @@ app.controller("AdmController", function ($scope, $http) {
     $scope.listaPeriodo = [];
 	$scope.periodo = {};
 
+	
+
 	var urlApi = 'http://localhost:8080/';
 
     //Materia

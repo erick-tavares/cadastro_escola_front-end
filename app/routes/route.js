@@ -9,5 +9,7 @@ app.config(function($routeProvider){
 
     .when('/adm', {templateUrl : 'app/views/adm.html', controller  : 'AdmController'})
 
+    .when('/boletim', {templateUrl : 'app/views/boletim.html', controller  : 'BoletimController'})
+
     .otherwise ({ redirectTo: '/' });
 });

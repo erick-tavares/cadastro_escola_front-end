@@ -24,6 +24,7 @@ app.controller("AlunoController", function ($scope, $http) {
 			$scope.listarAlunos();
 		}, function (response) {
 			console.log('erro ao salvar aluno');
+			console.log(response.data);
 		});
 	};
 
@@ -35,7 +36,6 @@ app.controller("AlunoController", function ($scope, $http) {
 			$scope.listaAluno = response.data;
 		}, function (response) { console.log('erro ao listar alunos') });
 	}
-
 
 	$scope.deleteAluno = function (id) {
 
