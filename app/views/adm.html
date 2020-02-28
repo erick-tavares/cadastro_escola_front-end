@@ -24,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="materia in listaMateria">
+                <tr ng-repeat="materia in listaMateria | orderBy:'nome'">
                     <td>{{materia.id }}</td>
                     <td>{{materia.nome }}</td>
                     <td class="actions">
@@ -56,9 +56,8 @@
             </div>
         </div>
         <br>
-        <input type="button" value="Pesquisar"  class="btn btn-default" ng-click="listarPeriodos()" />
+        <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarPeriodos()" />
         <br><br>
-        <p>{{periodo.dtInicio | date:'dd/MM/yyyy'}}</p>
         <table class="table table-hover table-bordered" id="tabelaPeriodo" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
@@ -71,9 +70,10 @@
             </thead>
             <tbody>
 
-                <tr ng-repeat="periodo in listaPeriodo">
+                <tr ng-repeat="periodo in listaPeriodo | orderBy:'dtInicio'">
+
                     <td>{{periodo.id }}</td>
-                    <td>{{periodo.dtInicio | date:'dd/MM/yyyy'}}</td>
+                    <td>{{periodo.dtInicio | date:'dd/MM/yyyy' }}</td>
                     <td>{{periodo.dtFim | date : 'dd/MM/yyyy'}}</td>
                     <td>{{periodo.descricao }}</td>
                     <td class="actions">
@@ -110,7 +110,8 @@
             </div>
         </div>
         <br>
-        <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarBoletins()" ng-click="listarPeriodos()" ng-click="listarAlunos()"/>
+        <input type="button" value="Pesquisar" class="btn btn-default" ng-click="listarBoletins()"
+            ng-click="listarPeriodos()" ng-click="listarAlunos()" />
         <br><br>
         <table class="table table-hover table-bordered" id="tabelaBoletim" cellspacing="0" cellpadding="0">
             <thead>
@@ -124,11 +125,11 @@
             <tbody>
                 <tr ng-repeat="boletim in listaBoletim">
                     <td>{{boletim.id }}</td>
-                    <td ng-repeat="periodo in listaPeriodo" ng-if="periodo.id == boletim.periodoId">{{periodo.descricao}}</td>
+                    <td ng-repeat="periodo in listaPeriodo" ng-if="periodo.id == boletim.periodoId">
+                        {{periodo.descricao}}</td>
                     <td ng-repeat="aluno in listaAluno" ng-if="aluno.id == boletim.alunoId"> {{aluno.nome}}</td>
 
                     <td class="actions">
-
 
                         <a class="btn btn-warning btn-xs" ng-click="alterarBoletim(boletim)">Editar</a>
                         <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal-boletim"
@@ -152,7 +153,8 @@
                     Deseja realmente excluir esta mat&eacute;ria?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deleteMateria(materia.id)">Sim</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        ng-click="deleteMateria(materia.id)">Sim</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
                 </div>
             </div>
@@ -171,7 +173,8 @@
                     Deseja realmente excluir este per&iacute;odo?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deletePeriodo(periodo.id)">Sim</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        ng-click="deletePeriodo(periodo.id)">Sim</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
                 </div>
             </div>
@@ -190,7 +193,8 @@
                     Deseja realmente excluir este boletim?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deleteBoletim(boletim.id)">Sim</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        ng-click="deleteBoletim(boletim.id)">Sim</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
                 </div>
             </div>

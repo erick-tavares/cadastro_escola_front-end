@@ -29,12 +29,11 @@ app.controller("NotaController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaNota.push(response.data);
 			$scope.listarNotas();
+			$scope.nota = {};
 			console.log(response.status);
 		}, function (response) {
-			console.log('erro ao salvar nota');
 			console.log(response.data);
-			console.log(response);
-			console.log(response.status);
+			window.alert("Status " + response.status + " / " + response.data.message);
 		});
 	};
 

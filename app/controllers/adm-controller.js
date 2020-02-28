@@ -29,10 +29,11 @@ app.controller("AdmController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaMateria.push(response.data);
 			$scope.listarMaterias();
+			$scope.materia = {};
 			console.log(response.status);
 		}, function (response) {
-			console.log('erro ao salvar materia');
-			console.log(response.status);
+			console.log(response.data);
+			window.alert("Status " + response.status + " / " + response.data.message);
 		});
 	};
 
@@ -86,12 +87,11 @@ app.controller("AdmController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaPeriodo.push(response.data);
 			$scope.listarPeriodos();
+			$scope.periodo = {};
 			console.log(response.status);
 		}, function (response) {
-			console.log('erro ao salvar periodo');
-			console.log(response);
 			console.log(response.data);
-			console.log(response.status);
+			window.alert("Status " + response.status + " / " + response.data.message);
 		});
 	};
 
@@ -102,6 +102,7 @@ app.controller("AdmController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaPeriodo = response.data;
 			console.log(response.status);
+			console.log(response.data)
 		}, function (response) {
 			console.log('erro ao listar periodos');
 			console.log(response.status);
@@ -145,11 +146,11 @@ app.controller("AdmController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaBoletim.push(response.data);
 			$scope.listarBoletins();
+			$scope.boletim = {};
 			console.log(response.status);
 		}, function (response) {
-			console.log('erro ao salvar boletim');
 			console.log(response.data);
-			console.log(response.status);
+			window.alert("Status " + response.status + " / " + response.data.message);
 		});
 	};
 

@@ -18,11 +18,10 @@
         <br>
         <div class="row">
             <div class="col-md-12">
-                <button type="submit" class="btn btn-primary" ng-click=downloadBoletim(boletim.id)>Download em PDF</button>
-                <button type="button" class="btn btn-default" ng-click=showBoletim(boletim.id)>Download em html</a>
+                <a aria-pressed="true" class="btn btn-primary"
+                    href="http://localhost:8080/boletins/report/{{boletim.id}}" target="_blank" role="button">Gerar
+                    Boletim</a>
             </div>
         </div>
-        <a title='Imprimir conteúdo' href='javascript:window.print()'>Imprimir boletim</a>
     </div>
-
 </body>

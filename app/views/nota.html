@@ -21,7 +21,7 @@
     </select>
 
     <label for="inputNota">Nota</label>
-    <input type="text" class="form-control" id="inputNota" ng-model="nota.nota">
+    <input type="number" max="10" min="0" step="0.10" class="form-control" id="inputNota" ng-model="nota.nota">
     <br>
     <div class="col-md-12">
         <button type="submit" class="btn btn-primary" ng-click=salvarNota()>Salvar</button>
@@ -49,7 +49,7 @@
         <tbody>
             <tr ng-repeat="nota in listaNota">
                 <td>{{nota.id }}</td>
-                <td>{{nota.nota }}</td>
+                <td>{{nota.nota | number:1}}</td>
                 <td ng-repeat="materia in listaMateria" ng-if="materia.id == nota.materiaId">{{materia.nome}}</td>
                 <td ng-repeat="aluno in listaAluno" ng-if="aluno.id == nota.alunoId"> {{aluno.nome}}</td>
                 <td>{{nota.boletimId}}</td>

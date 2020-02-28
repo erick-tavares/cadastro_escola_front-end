@@ -22,11 +22,12 @@ app.controller("AlunoController", function ($scope, $http) {
 		}).then(function (response) {
 			$scope.listaAluno.push(response.data);
 			$scope.listarAlunos();
+			$scope.aluno = {};
 			console.log(response.status);
 		}, function (response) {
-			console.log('erro ao salvar aluno');
 			console.log(response.data);
-			console.log(response.status);
+			window.alert("Status " + response.status + " / " + response.data.message);
+		
 		});
 	};
 
